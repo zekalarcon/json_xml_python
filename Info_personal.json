@@ -1,0 +1,25 @@
+[
+    {
+        "nombre": "Ezequiel",
+        "apellido": "Alarcon",
+        "dni": "32222222",
+        "prendas": [
+            {
+                "prenda": "zapatillas",
+                "cantidad": 15
+            },
+            {
+                "prenda": "remeras",
+                "cantidad": 30
+            },
+            {
+                "prenda": "medias",
+                "cantidad": 20
+            },
+            {
+                "prenda": "shorts",
+                "cantidad": 10
+            }
+        ]
+    }
+]

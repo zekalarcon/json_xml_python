@@ -154,7 +154,7 @@ def fetch_data():
     url = 'http://inove.pythonanywhere.com/finanzas'
     response = requests.get(url)
     dataset = response.json()
-
+    
     # Del dataset solo me quedo con la columna de los minutos.
     # y el precio de cierre de la acción.
     # Filtro aquellas filas que no posean precio.
@@ -227,13 +227,13 @@ if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
     #
     # ---- Ejemplos con JSON ---- #
-    json_create()
-    json_serialize()
-    json_deserialize()
-    json_request()
+    #json_create()
+    #json_serialize()
+    #json_deserialize()
+    #json_request()
     # ---- Ejemplos con XML ---- #
-    xml_parse()
+    #xml_parse()
     # ---- Ejemplo Integrador ---- #
     ejemplo_completo()
     # ---- Ejemplo con datetime ---- #
-    ejemplos_datetime()
+    #ejemplos_datetime()

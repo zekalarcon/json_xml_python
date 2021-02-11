@@ -16,6 +16,14 @@ __email__ = "alumnos@inove.com.ar"
 __version__ = "1.1"
 
 
+import json
+import requests
+import xml.etree.ElementTree as ET
+from datetime import datetime
+import matplotlib.pyplot as plt
+import matplotlib.axes
+
+
 def ej1():
     # JSON Serialize
     # Armar un JSON que represente los datos personales
@@ -36,7 +44,35 @@ def ej1():
     # un archivo que usted defina
 
     # Observe el archivo y verifique que se almaceno lo deseado
-    pass
+    
+
+    datos_ezequiel = {
+                     "nombre" : "Ezequiel",
+                     "apellido" : "Alarcon",
+                     "dni" : "32222222",
+                     "prendas": [
+                                { 
+                                 "prenda" : "zapatillas",
+                                 "cantidad" : 15
+                                },
+                                {
+                                 "prenda" : "remeras",
+                                 "cantidad" : 30   
+                                },
+                                {
+                                 "prenda" : "medias",
+                                 "cantidad" : 20
+                                },
+                                {
+                                 "prenda" : "shorts",
+                                 "cantidad" : 10
+                                }
+                                ]
+                     }
+
+    with open('Info_personal.json', 'w') as jsonfile:
+        data = [datos_ezequiel]
+        json.dump(data, jsonfile, indent = 4)
 
 
 def ej2():
@@ -49,7 +85,13 @@ def ej2():
     # el método "dumps" y finalmente imprimir en pantalla el resultado
     # Recuerde utilizar indent=4 para poder observar mejor el resultado
     # en pantalla y comparelo contra el JSON que generó en el ej1
-    pass
+    
+
+    with open('info_personal.json', 'r') as jsonfile:
+        json_data = json.load(jsonfile)
+
+    print('Info personal')
+    print(json.dumps(json_data, indent=4))\
 
 
 def ej3():
@@ -72,12 +114,17 @@ def ej4():
     # Python lanza algún error, es porque hay problemas en el archivo.
     # Preseten atención al número de fila y al mensaje de error
     # para entender que puede estar mal en el archivo.
-    pass
+    
+    tree = ET.parse('Info_personal.xml')
+    root = tree.getroot()
 
+    for child in root:
+        print('tag:', child.tag, 'attr:', child.attrib, 'text:', child.text)
+        for child2 in child:
+            print('tag:', child2.tag, 'attr:', child2.attrib, 'text:', child2.text)
 
 def ej5():
     # Ejercicio de consumo de datos por API
-    url = "https://jsonplaceholder.typicode.com/todos"
 
     # El primer paso es que copien esa URL en su explorador web
     # y analicen los datos en general.
@@ -102,12 +149,44 @@ def ej5():
     # y verifique si los primeros usuarios (mirando la página a ojo)
     # los datos recolectados son correctos.
 
+   
+
+    url = "https://jsonplaceholder.typicode.com/todos"
+    response = requests.get(url)
+    dataset = response.json()
+    print(dataset)
+    filter_data = [x['userId'] for x in dataset if x.get('completed') is True]
+
+    userId_1 = len([x for x in filter_data if x == 1 ])
+    userId_2 = len([x for x in filter_data if x == 2 ])
+    userId_3 = len([x for x in filter_data if x == 3 ])
+    userId_4 = len([x for x in filter_data if x == 4 ])
+    userId_5 = len([x for x in filter_data if x == 5 ])
+    userId_6 = len([x for x in filter_data if x == 6 ])
+    userId_7 = len([x for x in filter_data if x == 7 ])
+    userId_8 = len([x for x in filter_data if x == 8 ])
+    userId_9 = len([x for x in filter_data if x == 9 ])
+    userId_10 = len([x for x in filter_data if x == 10 ])
+
+    aprobadas = [userId_1, userId_2, userId_3, userId_4, userId_5, userId_6, userId_7, userId_8,
+                 userId_9, userId_10]
+
+    labels = ['userId 1', 'userId 2', 'userId 3', 'userId 4', 'userId 5', 'userId 6', 'userId 7',
+              'userId 8', 'userId 9', 'userId 10']
+
+    fig, ax = plt.subplots()
+    fig.suptitle('Porcentaje aprobado por Alumno')
+
+    ax.pie(aprobadas, labels = labels, autopct='%1.1f%%', startangle=180)
+    ax.axis('equal') 
+
+    plt.show()
 
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
-    ej1()
-    # ej2()
+    #ej1()
+    #ej2()
     # ej3()
-    # ej4()
-    # ej5()
+    #ej4()
+    ej5()

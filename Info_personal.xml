@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+    <info_ezequiel> 
+        <nombre>Ezequiel</nombre>
+        <apellido>Alarcon</apellido>
+        <dni>32222222</dni>
+        <prenda name="zapatillas">
+            <cantidad>15</cantidad>
+        </prenda>
+        <prenda name="remeras">
+            <cantidad>30</cantidad>
+        </prenda>
+        <prenda name="medias">
+            <cantidad>20</cantidad>
+        </prenda>
+        <prenda name="shorts">
+            <cantidad>10</cantidad>
+        </prenda>
+    </info_ezequiel>
