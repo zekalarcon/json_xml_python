@@ -12,8 +12,7 @@ def fetch():
     
     filter_data = [data['results']]
     
-    filter_currency = [x for x in filter_data if x[0]['currency_id'] == 'ARS']
-    dataset = [{'price':x['price'], 'condition':x['condition']} for x in filter_currency[0]]
+    dataset = [{'price':x['price'], 'condition':x['condition']} for x in filter_data[0] if x['currency_id'] == 'ARS']
     
     return dataset
    
