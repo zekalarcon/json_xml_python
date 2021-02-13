@@ -23,9 +23,9 @@ def transform(dataset):
     
     lista_str =[[x[0],float(re.sub(r'[^\d\-.]', '', x[1]))] for x in dataset]
    
-    f = lambda x: x[:1]
+    x = lambda x: x[:1]
    
-    lista_filtrada = [[*x, *map(sum, zip(*(i[1:] for i in y)))]for x, y in groupby(sorted(lista_str, key=f), f)]
+    lista_filtrada = [[*x, *map(sum, zip(*(i[1:] for i in y)))]for x, y in groupby(sorted(lista_str, key=x), x)]
     
     return lista_filtrada
 
