@@ -38,7 +38,7 @@ def report(data):
     y = [x[1] for x in data]
 
     fig, ax = plt.subplots()
-    fig.suptitle('Debits filtered by location')
+    fig.suptitle('Filtered Debits by location')
     
     pos_x = np.linspace(1,len(x), len(x))
     
